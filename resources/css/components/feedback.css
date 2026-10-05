@@ -1,0 +1,69 @@
+/* feedback: edit source, then run npm run build:css. */
+@layer components {
+  .badge {
+    @apply inline-flex;
+    padding: 3px 8px;
+    @apply text-[10px] font-semibold rounded-[5px];
+    background: #edf1eb;
+    color: #677b68;
+    @apply whitespace-nowrap;
+  }
+
+  .badge.good {
+    background: #e6f1e7;
+    color: #28623c;
+  }
+
+  .badge.warn {
+    background: #fff0d9;
+    color: #986228;
+  }
+
+  .badge.bad {
+    background: #fbe8e6;
+    color: #a44139;
+  }
+
+  .empty {
+    @apply text-center;
+    padding: 52px 24px;
+    @apply text-muted;
+  }
+
+  .empty .empty-icon {
+    @apply text-[28px] mb-[9px];
+    color: #8ca182;
+  }
+
+  .empty strong {
+    @apply block;
+    color: #45604c;
+    @apply mb-[5px];
+  }
+
+  .notice {
+    padding: 12px 15px;
+    @apply rounded-[7px];
+    background: #f6f0df;
+    color: #776038;
+    @apply text-[12px] mb-[18px];
+  }
+
+  .error {
+    background: #fcebea;
+    color: #a03732;
+    @apply p-[10px] rounded-[7px] text-[12px] mb-[14px];
+  }
+
+  #toast {
+    @apply fixed bottom-[24px] left-[50%];
+    transform: translateX(-50%);
+    @apply z-[100];
+    background: #183d30;
+    @apply text-white;
+    padding: 13px 22px;
+    @apply rounded-[9px];
+    box-shadow: 0 8px 30px #0002;
+    @apply max-w-[90%] hidden;
+  }
+}

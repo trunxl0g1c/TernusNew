@@ -1,0 +1,22 @@
+/* Tailwind source entry. Compiled output is committed for XAMPP users. */
+@import 'tailwindcss';
+@import './base.css';
+@import './components/ui.css';
+@import './components/layout.css';
+@import './components/auth.css';
+@import './components/dashboard.css';
+@import './components/forms.css';
+@import './components/tables.css';
+@import './components/feedback.css';
+@import './components/responsive.css';
+@import './components/print.css';
+@source "../../index.html";
+@source "../../MULAI_DISINI.html";
+@source "../../assets/js/**/*.js";
+@theme {
+  --color-brand: #1e5744;
+  --color-canvas: #f5f6f2;
+  --color-ink: #172d29;
+  --color-muted: #718079;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}

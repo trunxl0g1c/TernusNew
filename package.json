@@ -1,0 +1,21 @@
+{
+  "name": "ternus-inventory",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Modular inventory application for PHP/XAMPP",
+  "scripts": {
+    "build:css": "tailwindcss -i ./resources/css/app.css -o ./assets/css/app.css",
+    "watch:css": "tailwindcss -i ./resources/css/app.css -o ./assets/css/app.css --watch",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:domain": "php tests/domain_test.php",
+    "check:modules": "node scripts/check-modules.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.1.18",
+    "tailwindcss": "4.1.18",
+    "prettier": "3.8.1",
+    "@prettier/plugin-php": "0.24.0"
+  }
+}

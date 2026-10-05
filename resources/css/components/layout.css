@@ -1,0 +1,122 @@
+/* layout: edit source, then run npm run build:css. */
+@layer components {
+  .brandmark {
+    background: #d7b379;
+    color: #163f31;
+    @apply w-[40px] h-[40px] rounded-[12px] grid place-items-center;
+    font:
+      bold 26px Georgia,
+      serif;
+  }
+
+  .shell {
+    @apply grid;
+    grid-template-columns: 242px 1fr;
+    @apply min-h-screen;
+  }
+
+  .sidebar {
+    background: #173b30;
+    color: #d6e4da;
+    @apply fixed;
+    inset: 0 auto 0 0;
+    @apply w-[242px] overflow-auto;
+    padding: 28px 17px 18px;
+    @apply flex flex-col z-[5];
+  }
+
+  .brand {
+    @apply flex items-center gap-[12px];
+    padding: 0 10px 26px;
+  }
+
+  .brand strong {
+    @apply text-[20px] tracking-[.4px] text-white;
+  }
+
+  .brand small {
+    @apply block;
+    color: #9fb8ab;
+    @apply text-[10px] tracking-[2px];
+  }
+
+  .nav-label {
+    @apply text-[10px] tracking-[1.6px];
+    color: #8fa99b;
+    padding: 18px 14px 8px;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-[12px];
+    padding: 9px 13px;
+    @apply rounded-[8px];
+    margin: 2px 0;
+    @apply text-[13px];
+  }
+
+  .nav-item:hover {
+    background: #234a3c;
+  }
+
+  .nav-item.active {
+    background: #dce7d7;
+    color: #183e30;
+    font-weight: 650;
+  }
+
+  .nav-icon {
+    @apply w-[20px] text-center opacity-[.85];
+  }
+
+  .sidebar-bottom {
+    margin-top: auto;
+    padding: 24px 12px 0;
+    color: #a7bdaf;
+    @apply text-[11px];
+  }
+
+  .content {
+    grid-column: 2;
+    @apply min-w-[0];
+  }
+
+  .topbar {
+    @apply h-[76px];
+    border-bottom: 1px solid var(--line);
+    padding: 0 38px;
+    @apply flex justify-between items-center;
+    background: #fafbf8;
+  }
+
+  .crumb {
+    @apply text-muted text-[12px];
+  }
+
+  .user {
+    @apply flex items-center gap-[12px];
+  }
+
+  .avatar {
+    @apply w-[34px] h-[34px] rounded-[50%];
+    background: #e5ebdc;
+    @apply grid place-items-center font-bold;
+  }
+
+  .user-name {
+    @apply text-[12px] font-semibold;
+  }
+
+  .role {
+    @apply text-[10px] uppercase text-muted tracking-[1px];
+  }
+
+  .main {
+    padding: 32px 38px 50px;
+    @apply max-w-[1600px];
+    margin: auto;
+  }
+
+  .menu-toggle {
+    @apply hidden;
+  }
+}

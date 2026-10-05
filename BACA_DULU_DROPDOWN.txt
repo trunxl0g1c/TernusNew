@@ -1,0 +1,22 @@
+TERNUS — DROPDOWN DENGAN PENCARIAN
+
+1. Simpan salinan folder aplikasi dan backup data sebelum memperbarui.
+2. Ekstrak ZIP ini. Salin ISI folder ternus ke folder aplikasi Anda
+   (contoh C:\xampp\htdocs\ternus), lalu pilih Replace.
+   Jangan hapus folder aplikasi lama; pertahankan server/config.php.
+3. Buka localhost seperti biasa, lalu tekan Ctrl+F5.
+4. Klik dropdown, ketik sebagian nama/kode, lalu klik hasil atau tekan Enter.
+
+Semua dropdown pilihan tunggal mendapat pencarian, termasuk di baris baru,
+Quick Edit, filter, dan pengaturan. Pilihan barang pada rincian transaksi
+juga menampilkan SKU sehingga bisa dicari lewat kode.
+
+ZIP ini kumulatif dan mencakup revisi sebelumnya, termasuk tabel database
+terpisah. Aplikasi lengkap harus sudah terpasang. Tidak perlu memasang ZIP
+revisi sebelumnya satu per satu.
+
+Fitur pencarian tidak memerlukan migrasi database tambahan. Jika sebelumnya
+belum menjalankan migrasi tabel, panduannya tetap ada di docs/MIGRASI_DATABASE.md;
+migrasi tersebut dijalankan terpisah oleh owner, bukan otomatis saat update.
+
+Cara pakai dan hasil tes: docs/DROPDOWN_PENCARIAN.md.

@@ -1,0 +1,712 @@
+{
+  "version": 2,
+  "entities": {
+    "users": {
+      "table": "users",
+      "fields": {
+        "id": "id",
+        "name": "text",
+        "email": "email",
+        "password": "hash",
+        "role": "short",
+        "active": "bool"
+      },
+      "references": {},
+      "children": {},
+      "unique": [
+        "email"
+      ]
+    },
+    "locations": {
+      "table": "locations",
+      "fields": {
+        "id": "id",
+        "name": "text",
+        "active": "bool",
+        "version": "int"
+      },
+      "references": {},
+      "children": {},
+      "unique": []
+    },
+    "terms": {
+      "table": "sku_terms",
+      "fields": {
+        "id": "id",
+        "name": "text",
+        "active": "bool",
+        "version": "int",
+        "code": "short"
+      },
+      "references": {},
+      "children": {},
+      "unique": []
+    },
+    "products": {
+      "table": "products",
+      "fields": {
+        "id": "id",
+        "name": "text",
+        "active": "bool",
+        "version": "int",
+        "sku": "short",
+        "unit": "short",
+        "stage": "text",
+        "cost": "int",
+        "price": "int",
+        "minimum": "int",
+        "net_g": "int",
+        "sell": "bool",
+        "process": "bool"
+      },
+      "references": {},
+      "children": {},
+      "unique": [
+        "sku"
+      ]
+    },
+    "customers": {
+      "table": "customers",
+      "fields": {
+        "id": "id",
+        "name": "text",
+        "active": "bool",
+        "version": "int",
+        "phone": "text",
+        "address": "text",
+        "kind": "text"
+      },
+      "references": {},
+      "children": {},
+      "unique": []
+    },
+    "suppliers": {
+      "table": "suppliers",
+      "fields": {
+        "id": "id",
+        "name": "text",
+        "active": "bool",
+        "version": "int",
+        "phone": "text",
+        "address": "text",
+        "kind": "text"
+      },
+      "references": {},
+      "children": {},
+      "unique": []
+    },
+    "batches": {
+      "table": "stock_batches",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "product": "id",
+        "initial_qty": "int",
+        "cost": "int",
+        "pending": "bool",
+        "source": "text",
+        "date": "date",
+        "document": "short"
+      },
+      "references": {
+        "product": "products"
+      },
+      "children": {
+        "parents": {
+          "table": "batch_parents",
+          "fields": {
+            "batch": "id",
+            "qty": "int"
+          },
+          "references": {
+            "batch": "batches"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "receipts": {
+      "table": "receipts",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "source": "text",
+        "location": "id",
+        "status": "short"
+      },
+      "references": {
+        "by": "users",
+        "location": "locations"
+      },
+      "children": {
+        "lines": {
+          "table": "receipt_items",
+          "fields": {
+            "product": "id",
+            "batch": "id",
+            "qty": "int",
+            "cost": "int"
+          },
+          "references": {
+            "product": "products",
+            "batch": "batches"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "productions": {
+      "table": "productions",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "location": "id",
+        "kind": "text",
+        "status": "short",
+        "cost": "int",
+        "pending": "bool",
+        "finished": "date",
+        "extra": "int",
+        "loss": "int",
+        "input_mass": "int",
+        "note": "text"
+      },
+      "references": {
+        "by": "users",
+        "location": "locations"
+      },
+      "children": {
+        "inputs": {
+          "table": "production_inputs",
+          "fields": {
+            "batch": "id",
+            "product": "id",
+            "qty": "int",
+            "cost": "int"
+          },
+          "references": {
+            "batch": "batches",
+            "product": "products"
+          }
+        },
+        "outputs": {
+          "table": "production_outputs",
+          "fields": {
+            "batch": "id",
+            "product": "id",
+            "qty": "int",
+            "cost": "int"
+          },
+          "references": {
+            "batch": "batches",
+            "product": "products"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "transfers": {
+      "table": "transfers",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "from": "id",
+        "to": "id",
+        "status": "short"
+      },
+      "references": {
+        "by": "users",
+        "from": "locations",
+        "to": "locations"
+      },
+      "children": {
+        "lines": {
+          "table": "transfer_items",
+          "fields": {
+            "id": "id",
+            "batch": "id",
+            "qty": "int",
+            "received": "int"
+          },
+          "references": {
+            "batch": "batches"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "quotes": {
+      "table": "quotes",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "customer": "id",
+        "customer_name": "text",
+        "address": "text",
+        "location": "id",
+        "shipping": "int",
+        "total": "int",
+        "status": "short",
+        "valid_until": "date",
+        "order": "id"
+      },
+      "references": {
+        "by": "users",
+        "customer": "customers",
+        "location": "locations"
+      },
+      "children": {
+        "lines": {
+          "table": "quote_items",
+          "fields": {
+            "id": "id",
+            "product": "id",
+            "name": "text",
+            "sku": "short",
+            "unit": "short",
+            "qty": "int",
+            "price": "int",
+            "discount": "int",
+            "net": "int"
+          },
+          "references": {
+            "product": "products"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "orders": {
+      "table": "sales_orders",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "customer": "id",
+        "customer_name": "text",
+        "address": "text",
+        "location": "id",
+        "shipping": "int",
+        "total": "int",
+        "status": "short",
+        "quote": "id"
+      },
+      "references": {
+        "by": "users",
+        "customer": "customers",
+        "location": "locations",
+        "quote": "quotes"
+      },
+      "children": {
+        "lines": {
+          "table": "order_items",
+          "fields": {
+            "id": "id",
+            "product": "id",
+            "name": "text",
+            "sku": "short",
+            "unit": "short",
+            "qty": "int",
+            "price": "int",
+            "discount": "int",
+            "net": "int"
+          },
+          "references": {
+            "product": "products"
+          }
+        },
+        "allocations": {
+          "table": "order_allocations",
+          "fields": {
+            "id": "id",
+            "line": "id",
+            "batch": "id",
+            "remaining": "int"
+          },
+          "references": {
+            "batch": "batches"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "shipments": {
+      "table": "shipments",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "order": "id",
+        "customer_name": "text",
+        "location": "id",
+        "status": "short"
+      },
+      "references": {
+        "by": "users",
+        "order": "orders",
+        "location": "locations"
+      },
+      "children": {
+        "lines": {
+          "table": "shipment_items",
+          "fields": {
+            "id": "id",
+            "batch": "id",
+            "product": "id",
+            "qty": "int",
+            "returned": "int",
+            "cost": "int",
+            "net": "int"
+          },
+          "references": {
+            "batch": "batches",
+            "product": "products"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "invoices": {
+      "table": "invoices",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "order": "id",
+        "customer": "id",
+        "customer_name": "text",
+        "address": "text",
+        "shipping": "int",
+        "total": "int",
+        "status": "short",
+        "due": "date",
+        "company": "json"
+      },
+      "references": {
+        "by": "users",
+        "order": "orders",
+        "customer": "customers"
+      },
+      "children": {
+        "lines": {
+          "table": "invoice_items",
+          "fields": {
+            "id": "id",
+            "product": "id",
+            "name": "text",
+            "sku": "short",
+            "unit": "short",
+            "qty": "int",
+            "price": "int",
+            "discount": "int",
+            "net": "int"
+          },
+          "references": {
+            "product": "products"
+          }
+        }
+      },
+      "unique": [
+        "number",
+        "order"
+      ]
+    },
+    "payments": {
+      "table": "payments",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "invoice": "id",
+        "amount": "int",
+        "note": "text",
+        "method": "text"
+      },
+      "references": {
+        "by": "users",
+        "invoice": "invoices"
+      },
+      "children": {},
+      "unique": [
+        "number"
+      ]
+    },
+    "credits": {
+      "table": "credit_notes",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "invoice": "id",
+        "amount": "int",
+        "note": "text",
+        "method": "text"
+      },
+      "references": {
+        "by": "users",
+        "invoice": "invoices"
+      },
+      "children": {},
+      "unique": [
+        "number"
+      ]
+    },
+    "refunds": {
+      "table": "refunds",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "invoice": "id",
+        "amount": "int",
+        "note": "text",
+        "method": "text"
+      },
+      "references": {
+        "by": "users",
+        "invoice": "invoices"
+      },
+      "children": {},
+      "unique": [
+        "number"
+      ]
+    },
+    "returns": {
+      "table": "sales_returns",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "shipment": "id",
+        "location": "id",
+        "status": "short",
+        "note": "text"
+      },
+      "references": {
+        "by": "users",
+        "shipment": "shipments",
+        "location": "locations"
+      },
+      "children": {
+        "lines": {
+          "table": "return_items",
+          "fields": {
+            "batch": "id",
+            "qty": "int"
+          },
+          "references": {
+            "batch": "batches"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "stocktakes": {
+      "table": "stocktakes",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "location": "id",
+        "status": "short"
+      },
+      "references": {
+        "by": "users",
+        "location": "locations"
+      },
+      "children": {
+        "lines": {
+          "table": "stocktake_items",
+          "fields": {
+            "id": "id",
+            "batch": "id",
+            "bucket": "short",
+            "system": "int",
+            "physical": "int",
+            "reason": "text"
+          },
+          "references": {
+            "batch": "batches"
+          }
+        }
+      },
+      "unique": [
+        "number"
+      ]
+    },
+    "assets": {
+      "table": "office_assets",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "name": "text",
+        "serial": "text",
+        "location": "id",
+        "pic": "text",
+        "cost": "int",
+        "condition": "text",
+        "status": "short"
+      },
+      "references": {
+        "by": "users",
+        "location": "locations"
+      },
+      "children": {},
+      "unique": [
+        "number"
+      ]
+    },
+    "asset_events": {
+      "table": "asset_events",
+      "fields": {
+        "id": "id",
+        "number": "short",
+        "date": "date",
+        "created_at": "time",
+        "by": "id",
+        "by_name": "text",
+        "asset": "id",
+        "event": "short",
+        "note": "text",
+        "before": "json",
+        "after": "json"
+      },
+      "references": {
+        "by": "users",
+        "asset": "assets"
+      },
+      "children": {},
+      "unique": [
+        "number"
+      ]
+    },
+    "ledger": {
+      "table": "stock_movements",
+      "fields": {
+        "id": "id",
+        "batch": "id",
+        "product": "id",
+        "location": "id",
+        "bucket": "short",
+        "qty": "int",
+        "date": "date",
+        "time": "time",
+        "document": "short",
+        "document_id": "id",
+        "kind": "text",
+        "by": "text"
+      },
+      "references": {
+        "batch": "batches",
+        "product": "products",
+        "location": "locations"
+      },
+      "children": {},
+      "unique": []
+    },
+    "audit": {
+      "table": "audit_logs",
+      "fields": {
+        "id": "id",
+        "time": "time",
+        "user": "text",
+        "user_id": "id",
+        "role": "short",
+        "op": "short",
+        "document": "id",
+        "summary": "text",
+        "schema": "int",
+        "source": "short",
+        "changes": "json"
+      },
+      "references": {},
+      "children": {},
+      "unique": []
+    }
+  },
+  "maps": {
+    "settings": {
+      "table": "app_settings",
+      "value": "json"
+    },
+    "seq": {
+      "table": "document_sequences",
+      "value": "int"
+    },
+    "requests": {
+      "table": "command_requests",
+      "fields": {
+        "hash": "short",
+        "user": "id",
+        "result": "json"
+      }
+    },
+    "login_attempts": {
+      "table": "login_attempts",
+      "fields": {
+        "count": "int",
+        "time": "int"
+      }
+    }
+  }
+}

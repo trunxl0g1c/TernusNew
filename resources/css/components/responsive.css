@@ -1,0 +1,123 @@
+/* responsive: edit source, then run npm run build:css. */
+@layer components {
+  @media (max-width: 1100px) {
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .main {
+      @apply p-[26px];
+    }
+    .grid2 {
+      grid-template-columns: 1fr;
+    }
+    .sidebar {
+      @apply w-[216px];
+    }
+    .shell {
+      grid-template-columns: 216px 1fr;
+    }
+    .topbar {
+      padding: 0 26px;
+    }
+    .hero-emblem {
+      @apply hidden;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .stat-mark {
+      @apply hidden;
+    }
+    .shell {
+      @apply block;
+    }
+    .sidebar {
+      transform: translateX(-100%);
+      transition: 0.2s;
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    .content {
+      @apply w-full;
+    }
+    .topbar {
+      @apply h-[65px];
+      padding: 0 18px;
+    }
+    .menu-toggle {
+      @apply block;
+    }
+    .crumb {
+      @apply hidden;
+    }
+    .main {
+      padding: 24px 16px;
+    }
+    .page-heading {
+      @apply flex-col gap-[12px];
+    }
+    h1 {
+      @apply text-[26px];
+    }
+    .stats {
+      @apply gap-[10px];
+    }
+    .stat {
+      @apply p-[15px];
+    }
+    .stat-value {
+      @apply text-[23px];
+    }
+    .hero {
+      @apply p-[20px];
+    }
+    .hero h2 {
+      @apply text-[18px];
+    }
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .metric-locations {
+      grid-template-columns: 1fr;
+    }
+    .auth {
+      @apply block;
+    }
+    .auth-story {
+      @apply p-[26px];
+    }
+    .auth-story h1 {
+      @apply text-[30px];
+      margin: 16px 0;
+    }
+    .auth-story p,
+    .auth-story .tag {
+      @apply hidden;
+    }
+    .auth-form {
+      padding: 30px 22px;
+    }
+    .toolbar {
+      @apply p-[12px];
+    }
+    .search {
+      @apply min-w-[150px];
+    }
+    .modal-body {
+      @apply p-[16px];
+    }
+    .line-table {
+      @apply min-w-[620px];
+    }
+    .detail-grid {
+      grid-template-columns: 1fr;
+    }
+    .user-name {
+      @apply max-w-[150px] overflow-hidden;
+    }
+    .sidebar-bottom {
+      @apply pb-[20px];
+    }
+  }
+}

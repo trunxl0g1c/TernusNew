@@ -1,0 +1,79 @@
+/* dashboard: edit source, then run npm run build:css. */
+@layer components {
+  .stats {
+    @apply grid;
+    grid-template-columns: repeat(4, 1fr);
+    @apply gap-[17px] mb-[24px];
+  }
+
+  .stat {
+    border: 1px solid var(--line);
+    @apply rounded-[11px] bg-white p-[20px] relative;
+  }
+
+  .stat-label {
+    @apply text-muted text-[12px] mb-[14px];
+  }
+
+  .stat-value {
+    @apply text-[27px];
+    font-weight: 650;
+    @apply tracking-[-.8px];
+  }
+
+  .stat-note {
+    @apply text-[11px] text-muted mt-[7px];
+  }
+
+  .stat-mark {
+    @apply absolute right-[17px] top-[16px] text-brand;
+    background: #edf3e7;
+    @apply rounded-[8px] w-[29px] h-[29px] grid place-items-center;
+  }
+
+  .hero {
+    background: #e5ecdf;
+    padding: 25px 28px;
+    @apply flex justify-between items-center;
+    border: 1px solid #d9e4d2;
+    @apply rounded-[12px] mb-[23px];
+  }
+
+  .hero p {
+    margin: 6px 0 0;
+    @apply max-w-[630px];
+    color: #58715e;
+    @apply text-[13px];
+  }
+
+  .hero h2 {
+    @apply m-0;
+  }
+
+  .hero-emblem {
+    font: 60px Georgia;
+    color: #9daf90;
+  }
+
+  .grid2 {
+    @apply grid;
+    grid-template-columns: 1.1fr 1fr;
+    @apply gap-[22px];
+  }
+
+  .metric-locations {
+    @apply grid;
+    grid-template-columns: repeat(3, 1fr);
+    @apply gap-[14px];
+  }
+
+  .location-card {
+    @apply p-[16px];
+    border: 1px solid var(--line);
+    @apply rounded-[8px];
+  }
+
+  .location-card strong {
+    @apply block text-[20px] mt-[8px];
+  }
+}

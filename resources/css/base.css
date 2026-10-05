@@ -1,0 +1,162 @@
+/* base: edit source, then run npm run build:css. */
+@layer base {
+  :root {
+    --bg: #f5f6f2;
+    --paper: #fff;
+    --ink: #172d29;
+    --muted: #718079;
+    --green: #1e5744;
+    --line: #e2e8e1;
+    --orange: #d8883c;
+    --red: #af403e;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply m-0;
+    font:
+      14px/1.5 system-ui,
+      -apple-system,
+      Segoe UI,
+      sans-serif;
+    @apply text-ink bg-canvas;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button,
+  a,
+  input,
+  select {
+    @apply touch-manipulation;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  button:disabled {
+    @apply opacity-[.55] cursor-wait;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    outline: 3px solid #d7a963;
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    @apply mt-0;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-bold;
+  }
+  h2,
+  h3,
+  p {
+    @apply mb-[1em];
+  }
+
+  h1 {
+    @apply text-[30px] leading-[1.2] tracking-[-.8px] mb-[8px];
+  }
+
+  h2 {
+    @apply text-[21px] tracking-[-.3px];
+  }
+
+  h3 {
+    @apply text-[16px];
+  }
+
+  a {
+    color: inherit;
+    @apply no-underline;
+  }
+
+  table {
+    @apply border-collapse w-full whitespace-nowrap;
+  }
+
+  th {
+    @apply text-left text-[10px] tracking-[.6px] uppercase text-muted;
+    background: #f8faf6;
+    font-weight: 650;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  td {
+    padding: 13px 16px;
+    border-bottom: 1px solid #eef1ec;
+    @apply text-[12px];
+    vertical-align: middle;
+  }
+
+  tbody tr:hover {
+    background: #fafcf8;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  input,
+  select,
+  textarea {
+    border: 1px solid #d8e0d5;
+    @apply rounded-[6px] bg-white;
+    padding: 9px 10px;
+    @apply text-ink w-full min-w-[0];
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 2px solid #a1b794;
+    outline-offset: 1px;
+  }
+
+  input[type='checkbox'] {
+    @apply w-[16px] h-[16px];
+    accent-color: var(--green);
+  }
+
+  input[type='number'] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  label {
+    @apply block text-[12px];
+    font-weight: 550;
+    @apply mb-[5px];
+  }
+
+  dialog {
+    margin: auto;
+    border: 0;
+    @apply rounded-[13px] p-0;
+    width: min(880px, 96vw);
+    @apply max-h-[92vh];
+    box-shadow: 0 24px 80px #0004;
+    @apply text-ink;
+  }
+
+  dialog::backdrop {
+    background: #132c2666;
+    backdrop-filter: blur(3px);
+  }
+}

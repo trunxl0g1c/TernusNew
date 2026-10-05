@@ -1,0 +1,82 @@
+/* forms: edit source, then run npm run build:css. */
+@layer components {
+  .field {
+    @apply mb-[15px];
+  }
+
+  .field small {
+    @apply block text-[10px] text-muted mt-[5px] font-normal;
+  }
+
+  .form-grid {
+    @apply grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 16px;
+  }
+
+  .form-grid .wide {
+    grid-column: 1/-1;
+  }
+
+  .modal-head {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--line);
+    @apply flex items-center justify-between sticky top-[0] bg-white z-[3];
+  }
+
+  .modal-head h2 {
+    @apply m-0 text-[20px];
+  }
+
+  .modal-body {
+    padding: 22px 24px;
+  }
+
+  .modal-foot {
+    @apply flex justify-end gap-[8px];
+    padding: 16px 24px;
+    border-top: 1px solid var(--line);
+    background: #f8faf6;
+    @apply sticky bottom-[0] z-[3];
+  }
+
+  .line-title {
+    @apply flex justify-between items-center;
+    margin: 12px 0;
+  }
+
+  .line-title h3 {
+    @apply m-0;
+  }
+
+  .line-table td,
+  .line-table th {
+    @apply p-[7px];
+  }
+
+  .line-table {
+    white-space: normal;
+    table-layout: fixed;
+  }
+
+  .line-table select {
+    @apply text-[11px];
+  }
+
+  .line-table input {
+    padding: 8px 6px;
+    @apply text-[12px];
+  }
+
+  .line-table .remove-col {
+    @apply w-[34px];
+  }
+
+  .line-table .qty-col {
+    @apply w-[100px];
+  }
+
+  .line-table .price-col {
+    @apply w-[125px];
+  }
+}

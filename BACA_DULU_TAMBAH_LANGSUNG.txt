@@ -1,0 +1,15 @@
+TERNUS — TAMBAH DATA LANGSUNG DARI FORMULIR
+
+Salin ISI folder ternus dari ZIP ke folder aplikasi lama, pilih Replace,
+lalu buka localhost dan tekan Ctrl+F5. Simpan salinan aplikasi/backup dahulu.
+Jangan hapus folder aplikasi; pertahankan server/config.php milik Anda.
+
+Tombol + Tambah pelanggan/vendor/lokasi/barang kini tersedia di bawah pilihan
+yang terhubung ke master tersebut, sesuai hak akses pengguna.
+Isi data baru dan Simpan. Formulir sebelumnya tetap utuh dan data baru
+langsung terpilih. Kembali atau Esc membatalkan formulir tambah saja.
+
+Tidak diperlukan migrasi database tambahan untuk fitur ini.
+ZIP bersifat kumulatif: mencakup dropdown pencarian dan revisi sebelumnya.
+Tetap membutuhkan aplikasi lengkap yang sudah terpasang.
+Panduan: docs/TAMBAH_LANGSUNG.md.

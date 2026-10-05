@@ -1,0 +1,21 @@
+TERNUS — REVISI DATABASE TABEL TERPISAH
+
+ZIP ini berisi FILE PERUBAHAN KUMULATIF. Aplikasi lengkap harus sudah ada.
+Tidak perlu memasang ulang ZIP revisi sebelumnya.
+
+1. Hentikan input semua pengguna. Simpan backup JSON, ekspor seluruh database
+   dari phpMyAdmin, dan salinan folder aplikasi lama di luar htdocs.
+2. Stop Apache. Salin ISI folder ternus dari ZIP ke folder aplikasi Anda
+   (contoh C:\xampp\htdocs\ternus), pilih Replace. Jangan hapus folder lama.
+   Pertahankan server/config.php milik Anda. Jangan membuat folder ternus\ternus.
+3. Start Apache/MySQL, buka localhost seperti biasa dan tekan Ctrl+F5.
+4. Login owner -> Pengaturan -> Migrasi Database -> konfirmasi -> Mulai Migrasi.
+5. Tunggu status Tabel terpisah sudah aktif. Periksa data lalu izinkan input lagi.
+
+Akun/password tidak diubah. Invoice, penjualan, penerimaan, detail barang,
+stok, dan log berpindah ke tabel masing-masing. app_state lama hanya arsip.
+Jangan kembali ke kode lama setelah migrasi atau mencadangkan app_state saja.
+
+Panduan lengkap: docs/MIGRASI_DATABASE.md
+Hasil pengujian: HASIL_PENGUJIAN.md
+ZIP ini tidak berisi data atau password database Anda.

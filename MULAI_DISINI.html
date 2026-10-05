@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mulai di sini — TERNUS v1.1</title>
+    <link rel="stylesheet" href="assets/css/app.css" />
+  </head>
+  <body class="bg-canvas text-ink">
+    <main class="mx-auto max-w-3xl px-6 py-12">
+      <p class="text-sm font-bold uppercase tracking-widest text-brand">TERNUS v1.1</p>
+      <h1 class="mb-4 text-3xl font-bold">Inventory modular untuk XAMPP</h1>
+      <p>Inventory, produksi kopi, penjualan, dan inventaris kantor dalam satu aplikasi.</p>
+      <section class="my-6 rounded-xl border border-gray-200 bg-white p-6">
+        <h2 class="text-xl font-bold">Sudah memakai versi sebelumnya?</h2>
+        <p>
+          Backup database dan simpan konfigurasi lama sebelum mengganti folder aplikasi. Ikuti
+          <strong>docs/UPGRADE.md</strong>. Gunakan kembali <strong>server/config.php</strong> milik
+          Anda agar data lama tetap terbaca. Tidak perlu membuat akun owner baru atau mengimpor
+          ulang master.
+        </p>
+      </section>
+      <h2 class="text-xl font-bold">Pemasangan pertama</h2>
+      <ol class="mb-6 list-decimal space-y-3 pl-6">
+        <li>Salin folder <strong>ternus</strong> ke <strong>C:\xampp\htdocs\ternus</strong>.</li>
+        <li>Aktifkan <strong>Apache</strong> dan <strong>MySQL</strong> di XAMPP.</li>
+        <li>Buka <strong>http://localhost/ternus/index.html</strong>.</li>
+        <li>Buat akun owner. Database dan master awal dibuat otomatis.</li>
+        <li>Login, tinjau data barang, tambahkan vendor/pelanggan, lalu input penerimaan.</li>
+      </ol>
+      <a class="btn primary" href="http://localhost/ternus/index.html">Buka aplikasi →</a>
+      <section class="my-6 rounded-xl border border-gray-200 bg-white p-6">
+        <h2 class="text-xl font-bold">Untuk programmer</h2>
+        <p>
+          Mulai dari <strong>docs/DEVELOPER.md</strong>. Backend berada di
+          <strong>app/Modules</strong>, frontend di <strong>assets/js/modules</strong>, dan sumber
+          Tailwind di <strong>resources/css</strong>.
+        </p>
+        <p>
+          Jalankan <strong>npm ci</strong> dan <strong>npm run watch:css</strong> untuk
+          mengembangkan styling. Hasil build lokal sudah disertakan, sehingga penggunaan aplikasi
+          sehari-hari tidak membutuhkan npm, Composer, atau koneksi internet.
+        </p>
+      </section>
+      <p>
+        Gunakan PHP 8.1+. Bila password/port database berbeda, edit
+        <strong>server/config.php</strong>. Aplikasi harus dibuka melalui localhost. Saldo awal
+        instalasi baru kosong; 89 master barang tersedia untuk ditinjau.
+      </p>
+      <p class="text-sm text-muted">
+        Arsitektur modular monolith. Belum merupakan deployment microservice. Hasil pengujian dan
+        batas fitur tersedia di README.md dan HASIL_PENGUJIAN.md.
+      </p>
+    </main>
+  </body>
+</html>

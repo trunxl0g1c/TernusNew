@@ -1,0 +1,22 @@
+/* Standalone component stylesheet; no build or external library needed. */
+.search-select { display: inline-flex; position: relative; width: 100%; min-width: 0; vertical-align: middle; }
+.search-select .search-select-native { position: absolute !important; width: 1px !important; height: 1px !important; opacity: 0; pointer-events: none; padding: 0 !important; border: 0 !important; }
+.search-select .search-select-input { width: 100%; min-width: 0; padding-right: 30px !important; text-overflow: ellipsis; }
+.search-select-input[aria-invalid="true"] { border-color: #b42318; }
+.search-select .search-select-toggle { position: absolute; right: 1px; top: 1px; bottom: 1px; width: 28px; padding: 0; border: 0; background: transparent; color: #52645c; cursor: pointer; }
+.search-select-toggle:disabled { cursor: default; opacity: .5; }
+.search-select-list { position: fixed; z-index: 10000; overflow: auto; overscroll-behavior: contain; margin: 0; padding: 4px; border: 1px solid #b7c9bd; border-radius: 8px; background: #fff; color: #1d3027; box-shadow: 0 8px 28px #102b2430; font: 13px/1.5 system-ui, sans-serif; box-sizing: border-box; }
+.search-select-option { padding: 9px 10px; border-radius: 5px; cursor: pointer; white-space: normal; overflow-wrap: anywhere; }
+.search-select-option[aria-selected="true"] { font-weight: 650; }
+.search-select-option.is-active, .search-select-option:hover { background: #e4f1e9; color: #184f3c; }
+.search-select-empty { padding: 12px 10px; color: #67766e; }
+@media (max-width: 700px) { .search-select .search-select-input { font-size: 16px; } .search-select-option { padding: 12px 10px; } }
+@media print { .search-select-list, .search-select-toggle { display: none !important; } }
+
+.search-select-with-create { flex-wrap: wrap; }
+.search-select-with-create .search-select-toggle { height: 36px; bottom: auto; }
+.search-select .search-select-create { padding: 4px 0; margin-top: 3px; border: 0; background: transparent; color: #215f49; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left; }
+.search-select-create:hover { text-decoration: underline; }
+.search-select-create:disabled { opacity: .5; cursor: default; }
+.related-create-dialog { width: min(580px, 96vw); }
+@media print { .search-select-create { display: none !important; } }

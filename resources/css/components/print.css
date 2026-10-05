@@ -1,0 +1,73 @@
+/* print: edit source, then run npm run build:css. */
+@layer components {
+  .print-sheet {
+    @apply p-[15px];
+    color: #111;
+  }
+
+  .print-sheet h1 {
+    @apply text-[27px];
+  }
+
+  .print-meta {
+    @apply flex justify-between gap-[30px];
+    margin: 24px 0;
+  }
+
+  .print-sheet td,
+  .print-sheet th {
+    @apply text-[12px];
+  }
+
+  .print-total {
+    margin: 20px 0 0 auto;
+    @apply w-[280px];
+  }
+
+  .print-total div {
+    @apply flex justify-between;
+    padding: 7px 0;
+  }
+
+  .print-total .grand {
+    border-top: 2px solid #333;
+    @apply font-bold text-[17px];
+  }
+
+  @media print {
+    body > * {
+      @apply hidden;
+    }
+    dialog[open] {
+      @apply block;
+      position: static;
+      max-width: none;
+      @apply w-full;
+      max-height: none;
+      box-shadow: none;
+      overflow: visible;
+    }
+    dialog::backdrop,
+    .modal-head,
+    .modal-foot,
+    .no-print {
+      @apply hidden;
+    }
+    .modal-body {
+      @apply p-0;
+    }
+    .print-sheet {
+      @apply p-0;
+    }
+    thead {
+      display: table-header-group;
+    }
+    tr {
+      break-inside: avoid;
+    }
+    @page {
+      size: A4;
+      margin: 15mm;
+    }
+  }
+}

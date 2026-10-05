@@ -1,0 +1,334 @@
+{
+  "modules": {
+    "receiving": {
+      "label": "Penerimaan",
+      "depends": [],
+      "pages": [
+        "receipts"
+      ],
+      "actions": [
+        "receive"
+      ],
+      "commands": [
+        "receive"
+      ]
+    },
+    "production": {
+      "label": "Produksi",
+      "depends": [],
+      "pages": [
+        "productions"
+      ],
+      "actions": [
+        "production-start",
+        "production-complete"
+      ],
+      "commands": [
+        "production.start",
+        "production.complete"
+      ]
+    },
+    "packaging": {
+      "label": "Pengemasan",
+      "depends": [
+        "production"
+      ],
+      "pages": [],
+      "actions": [],
+      "commands": []
+    },
+    "transfers": {
+      "label": "Transfer lokasi",
+      "depends": [],
+      "pages": [
+        "transfers"
+      ],
+      "actions": [
+        "transfer-send",
+        "transfer-receive"
+      ],
+      "commands": [
+        "transfer.send",
+        "transfer.receive"
+      ]
+    },
+    "stocktakes": {
+      "label": "Stok opname",
+      "depends": [],
+      "pages": [
+        "stocktakes"
+      ],
+      "actions": [
+        "opname-start",
+        "opname-count",
+        "opname-approve",
+        "opname-cancel"
+      ],
+      "commands": [
+        "opname.start",
+        "opname.submit",
+        "opname.approve",
+        "opname.cancel"
+      ]
+    },
+    "sales": {
+      "label": "Penjualan / order",
+      "depends": [],
+      "pages": [
+        "orders"
+      ],
+      "actions": [
+        "sale-order",
+        "order-confirm",
+        "order-cancel"
+      ],
+      "commands": [
+        "order.create",
+        "order.confirm",
+        "order.cancel"
+      ]
+    },
+    "quotes": {
+      "label": "Quotation",
+      "depends": [
+        "sales",
+        "invoicing"
+      ],
+      "pages": [
+        "quotes"
+      ],
+      "actions": [
+        "sale-quote",
+        "quote-accept",
+        "quote-convert"
+      ],
+      "commands": [
+        "quote.create",
+        "quote.accept",
+        "quote.convert"
+      ]
+    },
+    "shipping": {
+      "label": "Pengiriman",
+      "depends": [
+        "sales"
+      ],
+      "pages": [
+        "shipments"
+      ],
+      "actions": [
+        "ship"
+      ],
+      "commands": [
+        "ship"
+      ]
+    },
+    "invoicing": {
+      "label": "Invoice",
+      "depends": [
+        "sales"
+      ],
+      "pages": [
+        "invoices"
+      ],
+      "actions": [
+        "invoice-create",
+        "invoice-issue"
+      ],
+      "commands": [
+        "invoice.create",
+        "invoice.issue"
+      ]
+    },
+    "payments": {
+      "label": "Pembayaran / kredit / refund",
+      "depends": [
+        "invoicing"
+      ],
+      "pages": [
+        "payments"
+      ],
+      "actions": [
+        "pay",
+        "credit",
+        "refund"
+      ],
+      "commands": [
+        "pay",
+        "credit",
+        "refund"
+      ]
+    },
+    "returns": {
+      "label": "Retur",
+      "depends": [
+        "shipping"
+      ],
+      "pages": [
+        "returns"
+      ],
+      "actions": [
+        "return-new",
+        "return-release"
+      ],
+      "commands": [
+        "return",
+        "return.release"
+      ]
+    },
+    "assets": {
+      "label": "Inventaris kantor",
+      "depends": [],
+      "pages": [
+        "assets"
+      ],
+      "actions": [
+        "asset-new",
+        "asset-event"
+      ],
+      "commands": [
+        "asset.create",
+        "asset.event"
+      ]
+    }
+  },
+  "profiles": {
+    "coffee": {
+      "label": "Kopi",
+      "modules": {
+        "receiving": true,
+        "production": true,
+        "packaging": true,
+        "transfers": true,
+        "stocktakes": true,
+        "sales": true,
+        "quotes": true,
+        "shipping": true,
+        "invoicing": true,
+        "payments": true,
+        "returns": true,
+        "assets": true
+      },
+      "stages": [
+        "Cherry",
+        "Gabah",
+        "Greenbeans",
+        "Roasted",
+        "Ground",
+        "Kemasan",
+        "Peralatan"
+      ],
+      "processes": [
+        "Cherry ke gabah",
+        "Hulling",
+        "Sorting",
+        "Roasting",
+        "Grinding",
+        "Blending"
+      ]
+    },
+    "retail": {
+      "label": "Toko / retail",
+      "modules": {
+        "receiving": true,
+        "production": false,
+        "packaging": false,
+        "transfers": true,
+        "stocktakes": true,
+        "sales": true,
+        "quotes": false,
+        "shipping": true,
+        "invoicing": true,
+        "payments": true,
+        "returns": true,
+        "assets": false
+      },
+      "stages": [
+        "Barang dagang",
+        "Aksesori",
+        "Perlengkapan"
+      ],
+      "processes": [
+        "Perakitan"
+      ]
+    },
+    "distribution": {
+      "label": "Distributor",
+      "modules": {
+        "receiving": true,
+        "production": false,
+        "packaging": false,
+        "transfers": true,
+        "stocktakes": true,
+        "sales": true,
+        "quotes": true,
+        "shipping": true,
+        "invoicing": true,
+        "payments": true,
+        "returns": true,
+        "assets": false
+      },
+      "stages": [
+        "Barang dagang",
+        "Bahan baku",
+        "Perlengkapan"
+      ],
+      "processes": [
+        "Penyortiran"
+      ]
+    },
+    "manufacturing": {
+      "label": "Produksi umum",
+      "modules": {
+        "receiving": true,
+        "production": true,
+        "packaging": true,
+        "transfers": true,
+        "stocktakes": true,
+        "sales": true,
+        "quotes": true,
+        "shipping": true,
+        "invoicing": true,
+        "payments": true,
+        "returns": true,
+        "assets": true
+      },
+      "stages": [
+        "Bahan baku",
+        "Barang setengah jadi",
+        "Produk jadi",
+        "Perlengkapan"
+      ],
+      "processes": [
+        "Pengolahan",
+        "Perakitan",
+        "Penyortiran"
+      ]
+    },
+    "custom": {
+      "label": "Usaha lainnya",
+      "modules": {
+        "receiving": true,
+        "production": true,
+        "packaging": true,
+        "transfers": true,
+        "stocktakes": true,
+        "sales": true,
+        "quotes": true,
+        "shipping": true,
+        "invoicing": true,
+        "payments": true,
+        "returns": true,
+        "assets": true
+      },
+      "stages": [
+        "Barang dagang",
+        "Bahan baku",
+        "Produk jadi"
+      ],
+      "processes": [
+        "Pengolahan"
+      ]
+    }
+  }
+}

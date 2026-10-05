@@ -1,0 +1,39 @@
+/* tables: edit source, then run npm run build:css. */
+@layer components {
+  .table-wrap {
+    @apply overflow-auto;
+  }
+
+  td .sub {
+    @apply block text-[10px] text-muted mt-[3px];
+  }
+
+  .toolbar {
+    @apply flex items-center gap-[10px];
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+    @apply flex-wrap;
+  }
+
+  .search {
+    @apply min-w-[230px] max-w-[420px] flex-1;
+  }
+
+  .toolbar .spacer {
+    @apply flex-1;
+  }
+
+  .count {
+    @apply text-[11px] text-muted;
+  }
+
+  .pagination {
+    padding: 12px 20px;
+    @apply flex justify-between text-[11px] text-muted;
+    border-top: 1px solid var(--line);
+  }
+
+  .print-sheet table {
+    white-space: normal;
+  }
+}

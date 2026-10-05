@@ -1,0 +1,16 @@
+/* Standalone master editor styles. No Tailwind rebuild required. */
+.master-editable-row td { cursor: text; }
+.master-editable-row td:first-child,
+.master-editable-row td:last-child { cursor: default; }
+.master-editing-row { background: #eef7f1; }
+.master-editing-row td { vertical-align: top; }
+.inline-cell { display: block; }
+.inline-cell input, .inline-cell select { width: 100%; min-width: 120px; box-sizing: border-box; }
+.inline-cell input[data-inline-input="name"] { min-width: 240px; }
+.inline-cell input:focus, .inline-cell select:focus { outline: 2px solid #1e5744; outline-offset: 1px; }
+.inline-cell input[data-inline-input="email"],
+.inline-cell input[data-inline-input="address"] { min-width: 220px; }
+.inline-address { display: block; max-width: 280px; white-space: normal; overflow-wrap: anywhere; }
+.inline-actions { min-width: 175px; max-width: 260px; white-space: normal; }
+.inline-hint { display: block; color: #52665b; font-size: 10px; margin-top: 6px; }
+.inline-error { display: block; color: #b42318; font-size: 12px; margin-top: 6px; }

@@ -1,0 +1,20 @@
+TERNUS — PERBAIKAN ERROR MIGRASI array_is_list
+
+Penyebab pada log: PHP 8.0.30 tidak menyediakan array_is_list().
+Kode pemeriksaan daftar sekarang tidak bergantung pada fungsi itu.
+Tidak ada perubahan nama database, konfigurasi, skema atau isi data dalam ZIP.
+
+1. Simpan backup JSON/SQL dan salinan folder aplikasi terlebih dahulu.
+2. Stop Apache. Salin ISI folder ternus dari ZIP ke folder aplikasi lama,
+   pilih Replace. Pertahankan server/config.php. Jangan hapus folder lama.
+3. Start Apache kembali, buka localhost lalu tekan Ctrl+F5.
+4. Login owner -> Pengaturan -> Migrasi Database -> Mulai Migrasi.
+   Pastikan pengguna lain tidak menginput dan tunggu hasilnya.
+
+Jangan hapus database/tabel atau menjalankan installer ulang. Tabel kosong
+bekas percobaan migrasi dapat dipakai kembali melalui migrator.
+Jika ada error baru, kirim baris TERNUS terbaru dari log Apache/PHP.
+
+ZIP ini berisi perubahan kumulatif dan mencakup revisi sebelumnya.
+Tetap membutuhkan aplikasi lengkap yang sudah terpasang.
+Rincian pengujian: docs/FIX_MIGRASI_ARRAY_IS_LIST.md.
